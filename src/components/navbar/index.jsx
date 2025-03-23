@@ -1,7 +1,20 @@
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../contexts";
+import { useContext } from "react";
 
 
 export default function Navbar() {
+    const { currentUser, logout } = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        logout();
+        navigate('/login');
+    };
+
+    if (!currentUser) return null;
+
     return (
         <nav className="navbar">
             <div className="navbar-brand">
@@ -27,7 +40,7 @@ export default function Navbar() {
                     <NavLink to={'/login'}>Sign In</NavLink>
                 </li>
                 <li className="nav-item">
-                    <NavLink to={'/dashboard'}><button className="btn-logout">Logout</button></NavLink>
+                    <button onClick={handleLogout} className="btn-logout">Logout</button>
                 </li>
             </ul>
         </nav>

@@ -105,7 +105,7 @@ body {
   margin-bottom: 2rem;
 }
 
-.btn-primary {
+.dashboard-header .btn-primary {
   background-color: var(--primary-color);
   color: white;
   border: none;
@@ -114,6 +114,7 @@ body {
   cursor: pointer;
   font-weight: 500;
   text-decoration: none;
+  width: 150px;
 }
 
 .btn-primary:hover {
@@ -334,7 +335,6 @@ body {
   border-radius: var(--border-radius);
   cursor: pointer;
   font-weight: 500;
-  width: 100%;
   font-size: 1rem;
   margin-top: 0.5rem;
 }
