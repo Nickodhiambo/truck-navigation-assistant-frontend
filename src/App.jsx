@@ -4,9 +4,10 @@ import Dashboard from './pages/dashboard'
 import TripPlanner from './pages/plan'
 import LogSheet from './pages/log'
 import Profile from './pages/profile'
-import './App.css'
 import Registration from './pages/register'
 import Login from './pages/login'
+import PrivateRoute from './components/privateRoute'
+import './App.css'
 
 
 function App() {
@@ -17,10 +18,10 @@ function App() {
         <Navbar />
         <div className="content">
           <Routes>
-            <Route path='/dashboard' element={<Dashboard />} />
-            <Route path='/plan-trip' element={<TripPlanner />} />
-            <Route path='/log-sheets' element={<LogSheet />} />
-            <Route path='/profile' element={<Profile />} />
+            <Route path='/dashboard' element={<PrivateRoute><Dashboard /></PrivateRoute>} />
+            <Route path='/plan-trip' element={<PrivateRoute><TripPlanner /></PrivateRoute>} />
+            <Route path='/log-sheets' element={<PrivateRoute><LogSheet /></PrivateRoute>} />
+            <Route path='/profile' element={<PrivateRoute><Profile /></PrivateRoute>} />
             <Route path='/signup' element={<Registration />} />
             <Route path='/login' element={<Login />} />
           </Routes>
