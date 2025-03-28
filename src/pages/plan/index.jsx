@@ -30,8 +30,6 @@ const TripPlanner = () => {
                 navigator.geolocation.getCurrentPosition(
                     position => {
                         const { latitude, longitude } = position.coords;
-                        console.log(latitude)
-                        console.log(longitude)
                         reverseGeocode(latitude, longitude);
                     },
                     error => {
@@ -191,7 +189,7 @@ const TripPlanner = () => {
                     </div>
 
                     <div className="action-buttons">
-                        <button className="btn-primary">Save Trip</button>
+                        {/* <button className="btn-primary">Save Trip</button> */}
                         <button className="btn-secondary">Generate Log Sheets</button>
                     </div>
                 </div>

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, Polyline } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
@@ -10,6 +10,8 @@ L.Icon.Default.mergeOptions({
     iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png'
 });
+
+// const [coords, setCoords] = useState([])
 
 // Custom marker icons for different stop types
 const getMarkerIcon = (type) => {
@@ -37,16 +39,12 @@ const MapView = ({ routeData }) => {
 
     // Extract coordinates from stops (mock implementation)
     const stopCoordinates = routeData.stops.map((stop, index) => {
-        // In a real app, you'd use actual geocoding or backend-provided coordinates
-        // This is a mock implementation around Kenya (based on locations in previous images)
-        const baseCoords = {
-            start: [-0.3030, 36.0800],
-            pickup: [-0.3030, 36.0800],   // Near Nakuru
-            dropoff: [0.5020, 35.2700],   // Near Eldoret
-            rest: [-0.0236, 37.9062],     // Central Kenya
-            fuel: [-0.0569, 37.6435],      // Another central location
-            overnight: [-0.0569, 37.6435]      // Another central location
-        };
+        let coodString = stop.coordinates
+        let coodList = coodString.split(',').map(num => parseFloat(num))
+        coodList.reverse()
+        let stopType = stop.type
+        const baseCoords = {};
+        baseCoords[stopType] = coodList
 
 
         // Slightly offset each coordinate to spread out markers

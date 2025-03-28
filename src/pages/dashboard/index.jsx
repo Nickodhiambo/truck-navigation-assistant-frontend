@@ -48,7 +48,7 @@ export default function Dashboard() {
                         <div className="hours-info">
                             <div className="hours-item">
                                 <h3>Cycle Used</h3>
-                                <p className="hours-value">{hoursData.cycle_used} / 70 hrs</p>
+                                <p className="hours-value">{Math.round(hoursData.cycle_used * 10) / 10} / 70 hrs</p>
                                 <div className="progress-bar">
                                     <div
                                         className="progress"
@@ -58,7 +58,7 @@ export default function Dashboard() {
                             </div>
                             <div className="hours-item">
                                 <h3>Daily Limit</h3>
-                                <p className="hours-value">{hoursData.daily_used} / 14 hrs</p>
+                                <p className="hours-value">{Math.round(hoursData.daily_used * 10) / 10} / 14 hrs</p>
                                 <div className="progress-bar">
                                     <div
                                         className="progress"
@@ -68,7 +68,7 @@ export default function Dashboard() {
                             </div>
                             <div className="hours-item">
                                 <h3>Driving Limit</h3>
-                                <p className="hours-value">{hoursData.driving_used} / 11 hrs</p>
+                                <p className="hours-value">{Math.round(hoursData.driving_used * 10) / 10} / 11 hrs</p>
                                 <div className="progress-bar">
                                     <div
                                         className="progress"
