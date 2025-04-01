@@ -71,6 +71,34 @@ const TripPlanner = () => {
         } finally {
             setLoading(false);
         }
+
+    };
+
+    const handleGenerateLog = async () => {
+        try {
+            // Set responseType to 'blob' to handle binary data
+            const response = await axios.get('/api/driver-logs/pdf/', {
+                responseType: 'blob'
+            });
+
+            // Create a blob URL for the PDF
+            const blob = new Blob([response.data], { type: 'application/pdf' });
+            const url = window.URL.createObjectURL(blob);
+
+            // Create a temporary link and trigger download
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', 'driver_log.pdf');
+            document.body.appendChild(link);
+            link.click();
+
+            // Clean up
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(link);
+        } catch (error) {
+            console.error('Error downloading PDF:', error);
+            // Handle error appropriately
+        }
     };
 
     return (
@@ -117,21 +145,6 @@ const TripPlanner = () => {
                                 placeholder="Enter dropoff location"
                             />
                         </div>
-
-                        {/* <div className="form-group">
-                            <label htmlFor="currentHours">Current Cycle Hours Used</label>
-                            <input
-                                type="number"
-                                id="currentHours"
-                                value={currentHours}
-                                onChange={(e) => setCurrentHours(parseFloat(e.target.value))}
-                                min="0"
-                                max="70"
-                                step="0.1"
-                                required
-                            />
-                            <small>Hours used in your 70-hour/8-day cycle</small>
-                        </div> */}
 
                         <button type="submit" className="btn-primary" disabled={loading}>
                             {loading ? 'Planning...' : 'Plan Route'}
@@ -189,8 +202,8 @@ const TripPlanner = () => {
                     </div>
 
                     <div className="action-buttons">
-                        {/* <button className="btn-primary">Save Trip</button> */}
-                        <button className="btn-secondary">Generate Log Sheets</button>
+                        {/* <button onClick={handleAllTrips} className="btn-primary">Save Trip</button> */}
+                        <button onClick={handleGenerateLog} className="btn-secondary">Generate Log Sheets</button>
                     </div>
                 </div>
             )}

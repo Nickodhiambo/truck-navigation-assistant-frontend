@@ -618,6 +618,10 @@ body {
   margin-top: 1.5rem;
 }
 
+.route-details .action-buttons{
+  width: 500px;
+}
+
 .route-summary {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
