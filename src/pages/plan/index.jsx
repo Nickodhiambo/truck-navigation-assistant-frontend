@@ -77,7 +77,7 @@ const TripPlanner = () => {
     const handleGenerateLog = async () => {
         try {
             // Set responseType to 'blob' to handle binary data
-            const response = await axios.get('/api/driver-logs/pdf/', {
+            const response = await api.get('/api/driver-logs/pdf/', {
                 responseType: 'blob'
             });
 
@@ -97,7 +97,6 @@ const TripPlanner = () => {
             document.body.removeChild(link);
         } catch (error) {
             console.error('Error downloading PDF:', error);
-            // Handle error appropriately
         }
     };
 
