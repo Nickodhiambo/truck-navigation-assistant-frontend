@@ -21,4 +21,6 @@ const api = axios.create({
     }
   );
 
+  // Might add a response interceptor
+
 export default api
