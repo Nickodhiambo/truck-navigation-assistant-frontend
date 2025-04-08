@@ -18,9 +18,13 @@ To set up and run the frontend, ensure you have the following:
 ## Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/truck-navigation-assistant-frontend.git
+   git clone https://github.com/Nickodhiambo/truck-navigation-assistant-frontend.git
    ```
-2. Install dependencies:
+2. Change into project directory:
+   ```bash
+   cd truck-navigation-assistant-frontend
+   ```
+3. Install dependencies:
    ```bash
    npm install
    ```
