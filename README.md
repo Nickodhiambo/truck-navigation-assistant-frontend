@@ -78,6 +78,6 @@ Visit `https://truck-navigation-assistant-frontend.vercel.app/`
 This project is licensed under the MIT License. See the LICENSE file for details.
 
 ## Contact
-For questions or support, contact [your-email@example.com].
+For questions or support, contact nodhiambo01@gmail.com.
 
 
